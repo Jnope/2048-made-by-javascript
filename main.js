@@ -74,7 +74,10 @@ document.addEventListener("touchstart", function(e){
     startx = e.touches[0].pageX;
     starty = e.touches[0].pageY;
 });
-document.removeEventListener('touchmove',this.preventDefault, false);
+document.addEventListener("touchmove", function(event){//防止触屏时页面滑动
+    event.preventDefault();
+}, {passive: false}
+);
 document.addEventListener("touchend", function(e){
     var moveX = e.changedTouches[0].pageX - startx;
     var moveY = e.changedTouches[0].pageY - starty;
